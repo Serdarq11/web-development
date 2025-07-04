@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms Demo</title>
+</head>
+
+<body>
+    <h1>Forms</h1>
+    <form action="/tacos">
+        <button type="button">Do not submit the form!</button>
+
+        <!-- file:///C:/tacos?username=serdar&password=Srdar1062.&color=%23e00000&num=5 -> this is happens when name values are given in the input-->
+        <p>
+            <label for="username">Enter a username: </label>
+            <input id="username" type="text" placeholder="username" name="username">
+        </p>
+        <p>
+            <label for="password">Enter a password: </label>
+            <input id="password" type="password" placeholder="password" name="password">
+        </p>
+        <button>In the middle!</button>
+        <p>
+            <label for="color">Choose a Color: </label>
+            <input type="color" id="color" name="color">
+        </p>
+        <p>
+            <label>
+                Choose a Number:
+                <input type="number" placeholder="enter a number" id="number" name="num" min="1" max="1000" step="2">
+            </label>
+        </p>
+        <!-- this button does not submit the form b/c of the "type" attribute -->
+        <button type="button">Regular button (won't submit)</button>
+        <!-- this button submits the form -->
+        <button>Submit!!!</button>
+        <!-- this button submits the form -->
+        <input type="submit" value="Click Me">
+    </form>
+    <hr>
+    <!-- outside of a form, no default behavior -->
+    <button>Not inside form</button>
+
+    <h2>Hijacking Searches</h2>
+    <h3>Search Reddit</h3>
+    <form action="https://www.reddit.com/search">
+        <input type="text" name="q">
+        <button>Search Reddit</button>
+    </form>
+
+    <h3>Search Google</h3>
+    <form action="https://www.google.com/search?">
+        <input type="text" name="q">
+        <button>Search google</button>
+    </form>
+
+    <h3>Search YouTube</h3>
+    <form action="https://www.youtube.com/results">
+        <input type="text" name="search_query">
+        <button>Search youtube</button>
+    </form>
+
+    <h2>More Inputs</h2>
+
+    <form action="/birds">
+        <input type="checkbox" name="agree_tos" id="agree">
+        <label for="agree">I agree to everything</label>
+        <p>
+            <label for="xs">XS:</label>
+            <input type="radio" name="size" id="xs" value="xs">
+            <label for="s">S:</label>
+            <input type="radio" name="size" id="s" value="s">
+            <label for="m">M:</label>
+            <input type="radio" name="size" id="m" value="m">
+        </p>
+        <p>
+            <label for="meal">Please select an Entree</label>
+            <select name="meal" id="meal">
+                <option value="">--Please Select an option--</option>
+                <option value="veg" selected>Vegetarian</option>
+                <option value="steak">Steak</option>
+                <option value="fish">Fish</option>
+            </select>
+        </p>
+        <p>
+            <label for="cheese">Amount od cheese: </label>
+            <input type="range" name="cheese" id="cheese" min="1" step="3" value="7" max="10">
+        </p>
+        <p>
+            <label for="requests">Any special requests?</label>
+            <br>
+            <textarea name="requests" id="requests" rows="10" cols="50" placeholder="type something here..."></textarea>
+        </p>
+        <button>Submit</button>
+    </form>
+
+</body>
+
+</html>
