@@ -20,5 +20,5 @@ if(age >= 0 && age < 5 || age >= 65){
 
 let firstName = prompt("enter your first name");
 if(!firstName){
-    firstname = prompt("try again!");
+    firstName = prompt("try again!");
 }
