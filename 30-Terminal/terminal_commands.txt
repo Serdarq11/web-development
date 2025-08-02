@@ -1,0 +1,56 @@
+* The terminal takes some getting used to, but it can be MUCH faster than using a GUI.
+
+---TERMINAL---
+A TEXT-BASED INTERFACE TO YOUR COMPUTER. ORIGINALLY A PHYSICAL OBJECT, BUT NOW WE USE SOFTWARE TERMINALS
+
+---SHELL---
+THE PROGRAM RUNNING ON THE TERMINAL.
+
+ANALOGY!
+TERMINAL -> In this stupid analogy, the ATM is the terminal
+SHELL -> The software running on the ATM is the shell
+
+---BASH---
+ONE OF THE MOST POPULAR SHELLS (AND THE DEFAULT ON A MAC)
+
+---COMMANDS---
+ls -> lists all folders in the directory
+pwd -> tells us which directory we are now
+
+
+---Changing directories---
+cd OneDrive -> Now I am in the OneDrive
+cd Masaüstü -> Now I am in the Desktop
+cd OneDrive/Masaüstü -> directly two level or more
+cd ../../OneDrive    -> takes me two step back and then one step forward
+cd ..       -> One directory back
+
+---Making Directories---
+mkdir foldername      -> makes a new directory
+mkdir Frogs/TreeFrogs SugarGliders   -> Frogs and SugarGliders added to the Pets directory
+TreeFrogs added to the Frogs directory
+
+
+---Man Pages and Flags---
+mkdir -v Cows Horses Rats   -> all of them will be created
+ls -l                       -> lists with information like creation time of folder etc.
+ls -a                       -> shows all folders including hidden folders
+ls -la                      -> both of them
+
+
+---TOUCH---
+mkdir Dogs              -> creates the folder Dogs
+touch index.html app.css app.js     -> 3 folders in Dogs        (remember to put the file extension)
+** if we again touch app.js for example, and then ls -l         -> change the time file created
+
+---REMOVE---
+rm app.css index.html     -> removes it from Dogs when we are in the Dogs directory
+
+rmdir Dogs                -> if the Dogs directory is empty; it will remove it, otherwise; it won't remove it.
+rm -rf Dogs               -> it will force to remove Dogs whatever it has files inside of it or not. (rf stands for recursive force)
+
+
+
+
+
+
