@@ -1,0 +1,19 @@
+What is Node?
+Until recently, we could only run JavaScript code in a web browser. 
+Node is a JavaScript runtime that executes code outside of the browser.
+
+WHAT DO PEOPLE BUILD WITH IT?
+Web Servers
+Command Line Tools
+Native Apps (VS Code is a Node app!)
+Video Games
+Drone Software
+A Whole Lot More!
+
+*The javascript console in our browser is a REPL -> I can type some code in, it will read it, evaluate it, and then print
+*window and document does not work if type node in bash, because node will run out of the server.
+
+*We can type node firstScript.js in Git Bash to run the code in terminal
+
+
+
