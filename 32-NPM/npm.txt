@@ -1,0 +1,16 @@
+NPM is reaaly two things!
+1. A library of thousands of packages published by other developers that we can use for free! 
+2. A command line tool to easily install and manage those packages in our Node projects.
+
+npm i -g        _> stands for global packages (-g)
+
+  "dependencies": {     // when we install it, they came here (example of Artster / index.js)
+    "colors": "^1.4.0",
+    "figlet": "^1.8.2"
+  }
+
+
+npm install     -> install all dependencies
+
+There was an issue about the last video!!
+
