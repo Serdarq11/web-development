@@ -1,0 +1,31 @@
+What is Express?
+Express is our first framework! It is a fast, unopinionated, 
+minimalist web framework for Node.js. Express helps us build web applications and APIs efficiently. 
+It’s essentially just an NPM package that provides a collection of methods and optional plugins, 
+allowing developers to quickly set up servers, define routes, handle requests and responses, and extend functionality as needed. 
+Its simplicity and flexibility make it a popular choice for creating both small and large-scale web apps.
+
+EXPRESS HELPS US...
+*Start up a server to listen for incoming requests
+*Parse incoming requests to access request data
+*Match those requests to particular routes defined in the app
+*Craft the HTTP response and send the associated content back to the client
+
+LIBRARIES VS FRAMEWORKS
+
+LIBRARY:
+When you use a library, you are in charge! You control the flow of the application code and decide when and where to use the library. 
+The library provides helpful tools or functions, but it doesn’t dictate the overall structure of your program.
+
+FRAMEWORK:
+With frameworks, that control is inverted. The framework is in charge, and you are merely a participant. 
+It defines the structure and flow of the application and tells you where to plug in your code. 
+You follow its rules and guidelines to build your app.
+
+
+
+by npm init -y, we installed the package.json file.
+by npm i express, we installed node modules and package lock.json files
+
+app.get(/(.*)/, (req, res) => {
+})
