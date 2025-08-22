@@ -29,3 +29,5 @@ by npm i express, we installed node modules and package lock.json files
 
 app.get(/(.*)/, (req, res) => {
 })
+
+by "npm i -g nodemon" and then typing "nodemon index.js" to the bash, we do not have to restart the file in bash again and again (node index.js)
