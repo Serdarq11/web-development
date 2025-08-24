@@ -13,7 +13,7 @@ const app = express();      // it is a method
 
 
 app.get('/', (req,res) => {
-    res.send('Welcome is the HomePage');   // 'This is the HomePage' on the page -> localhost:8080
+    res.send('This is the HomePage');   // 'This is the HomePage' on the page -> localhost:8080
 })
 
 app.get('/r/:subreddit', (req,res) => {
@@ -34,7 +34,7 @@ app.get('/cats', (req,res) => {
 
 app.post('/cats', (req,res) => {
     // console.log("CAT REQUEST!!!");
-    res.send('POST REQUEST TO /cats !!! THIS IS DIFFERENT THAT GET REQUEST!!');   // see it in the Postman
+    res.send('POST REQUEST TO /cats !!! THIS IS DIFFERENT THAN GET REQUEST!!');   // see it in the Postman
 })
 
 app.get('/dogs', (req,res) => {
@@ -45,7 +45,7 @@ app.get('/dogs', (req,res) => {
 app.get('/search', (req,res) => {
     const { q } = req.query;
     if(!q){
-        res.send('NOTHING FOUND IF NOTHING SEARCHED!')
+        res.send('NOTHING FOUND IF NOTHING SEARCHED!');
     }
     res.send(`<h1> SEARCH RESULTS FOR: ${q}! </h1>`); // SEARCH RESULTS FOR: dogs! -> localhost:8080/search?q=dogs
 })
