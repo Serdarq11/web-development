@@ -1,0 +1,44 @@
+GET VS POST
+
+GET 
+- Used to retrieve information
+- Data is sent via query string
+- Information is plainly visible in the URL!
+- Limited amount of data can be sent
+
+POST
+- Used to post data to the server
+- Used to write/create/update
+- Data is sent via request body, not a query string!
+- Can send any sort of data (JSON!)
+
+INTRO TO REST   -> REPRESENTATIONAL STATE TRANSFER
+REST is an "architectural style for distributed hypermedia systems". Yikes. 
+It's basically a set of guidelines for how a client + server should communicate and perform CRUD operations on a given resource.
+
+The main idea of REST is treating data on the server-side as resources that can be CRUDed. 
+The most common way of approaching REST is in formatting the URLs and HTTP verbs in your applications.
+
+gist -> files in github
+
+username
+text
+
+bob - hello
+
+GET /allcomments
+GET /all
+GET /showmeallcommentsnow
+
+POST /newcomment
+POST /makecomment
+
+SO
+
+GET /comments           - list all comments
+POST /comments          - create a new comment
+GET /comments/:id       - Get one specific comment by id
+PATCH /comments/:id     - update one comment
+DELETE /comments/:id     - destroy one comment
+
+route names of above are in the slides.
