@@ -1,0 +1,27 @@
+if it is a nested object, how can we find the exact objects' one key
+
+{
+  name: "Alice",
+  contact: {
+    email: "alice@example.com",
+    phone: "12345"
+  },
+  address: {
+    city: "Ankara",
+    zip: "06000"
+  }
+}
+
+db.users.find({ "contact.email": "alice@example.com" })     // using dot 
+
+COMPARISON OPERATORS
+| Operator  | Meaning                    | Example                                              |
+| --------- | -------------------------- | ---------------------------------------------------- |
+| $eq  | Equal to                   | { age: { $eq: 25 } } → finds docs where age = 25 |
+| $ne  | Not equal to               | { status: { $ne: "active" } }                      |
+| $gt  | Greater than               | { score: { $gt: 80 } }                             |
+| $gte | Greater than or equal to   | { score: { $gte: 80 } }                            |
+| $lt  | Less than                  | { price: { $lt: 100 } }                            |
+| $lte | Less than or equal to      | { price: { $lte: 100 } }                           |
+| $in  | Matches any value in array | { city: { $in: ["Ankara", "Istanbul"] } }          |
+| $nin | Not in array               | { city: { $nin: ["London", "Paris"] } }            |
