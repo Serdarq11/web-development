@@ -1,0 +1,98 @@
+WHY USE A DATABASE?
+INSTEAD OF JUST SAVING TO A FILE
+
+-Databases can handle large amounts of data efficiently and store it compactly.
+-They provide tools for easy insertion, querying, and updating of data.
+-They generally offer security features and control over access to data.
+-They (generally) scale well.
+
+| **SQL Databases**                                                | **NoSQL Databases**                                       |
+| ---------------------------------------------------------------- | --------------------------------------------------------- |
+| Use **Structured Query Language (SQL)**                          | **Do not use SQL**                                        |
+| Are **relational databases**                                     | Include **many types**: document, key-value, graph stores |
+| Require a **pre-defined schema** of tables before inserting data | **Schema-less** or flexible schema depending on the type  |
+
+by typing "mongosh" -> we connect to mongodb shell in command prompt or bash
+by typing "db"      -> this is the database that I will be using by default
+
+show dbs       -> admin    40.00 KiB
+config  108.00 KiB
+local    40.00 KiB
+test>
+
+use animalShelter               -> changing or creating database
+switched to db animalShelter
+animalShelter>
+
+| Operation | Example in a Web App              |
+| --------- | --------------------------------- |
+| Create    | Submitting a new user signup form |
+| Read      | Viewing a user's profile          |
+| Update    | Editing a blog post               |
+| Delete    | Deleting a comment                |
+
+Inserting with mongo
+| **Method**     | **Use Case**                      | **Input**             | **Function**               |
+| -------------- | --------------------------------- | --------------------- | -------------------------- |
+| `insertOne()`  | Insert a single document          | One document          | Inserts 1 document         |
+| `insertMany()` | Insert multiple documents at once | Array of documents    | Inserts multiple documents |
+| `insert()`     | Insert one or more documents      | One or many documents | Inserts document(s)        |
+
+db.dogs.insertOne({name : "Charlie", age : 3, breed : "corgi", catFriendly : true})
+{
+  acknowledged: true,
+  insertedId: ObjectId('68b1dc08ed981ed1d7735189')
+}
+animalShelter>
+
+and then typing "show collections", we get "dogs" collection
+
+by animalShelter> db.dogs.find()
+[
+  {
+    _id: ObjectId('68b1dc08ed981ed1d7735189'),
+    name: 'Charlie',
+    age: 3,
+    breed: 'corgi',
+    catFriendly: true
+  }
+]
+animalShelter>
+
+// so _id is made for us by mongo.
+and then we can insert things into the collection dogs by:
+
+db.dogs.insert([{name : "Wyatt", breed : "Golden", age : 14, catFriendly : false}, 
+{name : "Tanya", breed : "Chihuahua", age : 17, catFriendly : true}])
+
+db.dogs.find()
+[
+  {
+    _id: ObjectId('68b1dc08ed981ed1d7735189'),
+    name: 'Charlie',
+    age: 3,
+    breed: 'corgi',
+    catFriendly: true
+  },
+  {
+    _id: ObjectId('68b1dda8ed981ed1d773518a'),
+    name: 'Wyatt',
+    breed: 'Golden',
+    age: 14,
+    catFriendly: false
+  },
+  {
+    _id: ObjectId('68b1dda8ed981ed1d773518b'),
+    name: 'Tanya',
+    breed: 'Chihuahua',
+    age: 17,
+    catFriendly: true
+  }
+]
+animalShelter>
+
+FINDING IN MONGO
+
+*db.dogs.find({breed : "corgi"})     // and it finds it 
+*findOne instead of find gives me just one 
+*also we can type two keys and values instead of searching just one key value pair.
