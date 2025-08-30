@@ -1,0 +1,25 @@
+DELETING WITH MONGO
+
+| Method           | Effect                              | Example                                    |
+| ---------------- | ----------------------------------- | ------------------------------------------ |
+| **deleteOne()**  | Deletes **first matching document** | `db.users.deleteOne({name:"Alice"})`       |
+| **deleteMany()** | Deletes **all matching documents**  | `db.users.deleteMany({status:"inactive"})` |
+
+db.cats.deleteOne({name: 'Blue Steele'})    // deleting one
+{ acknowledged: true, deletedCount: 1 }
+
+db.dogs.deleteMany({isAvailable: false})     // deleting many
+{ acknowledged: true, deletedCount: 2 }
+animalShelter> db.dogs.find()               // we have only one left
+[
+  {
+    _id: ObjectId('68b1dda8ed981ed1d773518a'),
+    name: 'Wyatt',
+    breed: 'Golden',
+    age: 14,
+    catFriendly: false
+  }
+]
+animalShelter>
+
+db.dogs.deletMany({})   // deleting all of them

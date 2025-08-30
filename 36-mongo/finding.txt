@@ -1,0 +1,5 @@
+FINDING WITH MONGO
+
+*db.dogs.find({breed : "corgi"})     // and it finds it 
+*findOne instead of find gives me just one 
+*also we can type two keys and values instead of searching just one key value pair.

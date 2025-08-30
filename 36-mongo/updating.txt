@@ -1,0 +1,111 @@
+UPDATING IN MONGO
+
+| Method           | Effect                                | Example                                                          |
+| ---------------- | ------------------------------------- | ---------------------------------------------------------------- |
+| **updateOne()**  | Updates **first match** only          | `db.users.updateOne({name:"Alice"}, {$set:{age:25}})`            |
+| **updateMany()** | Updates **all matches**               | `db.users.updateMany({status:"active"}, {$set:{verified:true}})` |
+| **replaceOne()** | **Replaces entire doc** (first match) | `db.users.replaceOne({name:"Bob"}, {name:"Bobby", age:30})`      |
+
+db.dogs.updateOne({name : "Charlie"}, {$set : {age : 4}})   // changing Charlie's age with 4
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+db.dogs.updateOne({name: 'Charlie'}, {$set: {age: 5, breed: 'Lab'}})  // changing both the age and breed
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+animalShelter> db.dogs.find({name: 'Charlie'})
+[
+  {
+    _id: ObjectId('68b1dc08ed981ed1d7735189'),
+    name: 'Charlie',
+    age: 5,
+    breed: 'Lab',
+    catFriendly: true
+  }
+]
+
+db.dogs.updateOne({name: 'Charlie'}, {$set: {color: 'chocolate'}})  // added new key value color: 'chocolate'
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+animalShelter> db.dogs.find({name: 'Charlie'})
+[
+  {
+    _id: ObjectId('68b1dc08ed981ed1d7735189'),
+    name: 'Charlie',
+    age: 5,
+    breed: 'Lab',
+    catFriendly: true,
+    color: 'chocolate'    // seen in here
+  }
+]
+
+db.dogs.updateMany({catFriendly: true}, {$set: {isAvailable: false}}) // updating many
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,    // this time 2
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+animalShelter> db.dogs.find()
+[
+  {
+    _id: ObjectId('68b1dc08ed981ed1d7735189'),
+    name: 'Charlie',
+    age: 5,
+    breed: 'Lab',
+    catFriendly: true,
+    color: 'chocolate',
+    isAvailable: false      // this has added as catFriendly is true
+  },
+  {
+    _id: ObjectId('68b1dda8ed981ed1d773518a'),
+    name: 'Wyatt',
+    breed: 'Golden',
+    age: 14,
+    catFriendly: false
+  },
+  {
+    _id: ObjectId('68b1dda8ed981ed1d773518b'),
+    name: 'Tanya',
+    breed: 'Chihuahua',
+    age: 17,
+    catFriendly: true,
+    isAvailable: false    // this has added as catFriendly is true
+  }
+]
+
+db.cats.updateOne({age: 6}, {$set: {age: 7}, $currentDate: {lastchanged: true}})  // getting current date
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+animalShelter> db.cats.find()
+[
+  {
+    _id: ObjectId('68b1dfa4ed981ed1d773518c'),
+    name: 'Blue Steele',
+    age: 7,
+    dogFriendly: false,
+    breed: 'Scottish Fold',
+    lastchanged: ISODate('2025-08-30T12:17:03.177Z')  // here it is 
+  }
+]
