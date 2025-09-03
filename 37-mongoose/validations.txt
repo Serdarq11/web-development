@@ -1,0 +1,126 @@
+Here’s a compact Mongoose cheat sheet for Schema Types and Validation/Constraints, plus a mini example.
+
+Schema Types (common)
+
+String — supports minlength, maxlength, match, enum, lowercase, uppercase, trim
+
+Number — supports min, max
+
+Date
+
+Boolean
+
+Buffer
+
+ObjectId (Schema.Types.ObjectId) — often with ref for population
+
+Array (e.g., [String], [Number], [SubSchema])
+
+Mixed (Schema.Types.Mixed) — anything (no strict checks)
+
+Decimal128 (Schema.Types.Decimal128)
+
+Map (e.g., Map<String>) — key/value pairs
+
+Schema (subdocuments via new Schema({...}))
+
+Constraints / Options (validators & helpers)
+
+required: true | [true, "msg"]
+
+minlength, maxlength (String)
+
+min, max (Number/Date)
+
+enum: ["A","B"] (String)
+
+match: /regex/ (String)
+
+validate: { validator: fn, message: "msg" } (custom)
+
+default: value | () => value
+
+unique: true (creates a unique index; not a validator by itself)
+
+immutable: true
+
+select: false (omit by default from query results)
+
+lowercase, uppercase, trim (String transforms)
+
+get / set (transform values on read/write)
+
+ref: "ModelName" (for ObjectId population)
+
+index: true, sparse: true
+
+Schema-level: { timestamps: true }, { strict: true }
+
+✅ Important: Validators run on save() and create() by default. For updates, pass { runValidators: true } to updateOne, findOneAndUpdate, etc.
+
+example:
+
+
+const mongoose = require("mongoose");
+
+// ===== CONNECT =====
+mongoose.connect("mongodb://127.0.0.1:27017/movieApp")
+  .then(() => {
+    console.log("✅ Mongo Connection Open");
+
+    // ===== SCHEMA =====
+    const movieSchema = new mongoose.Schema(
+      {
+        title: {
+          type: String,
+          required: [true, "Title is required"],
+          trim: true,
+          minlength: 1,
+          maxlength: 120
+        },
+        rating: {
+          type: Number,
+          min: [0, "Min rating is 0"],
+          max: [10, "Max rating is 10"],
+          default: 5
+        },
+        genre: {
+          type: String,
+          enum: ["Action", "Drama", "Comedy", "Sci-Fi", "Other"],
+          required: true
+        },
+        releasedAt: { type: Date, default: Date.now },
+        isClassic: { type: Boolean, default: false, immutable: true },
+        tags: { type: [String], default: [] }
+      },
+      { timestamps: true }
+    );
+
+    // ===== MODEL =====
+    const Movie = mongoose.model("Movie", movieSchema);
+
+    // ===== CREATE (with validation) =====
+    Movie.create({ title: "Inception", rating: 9, genre: "Action" })
+      .then(doc => {
+        console.log("🎬 Created Movie:", doc);
+      })
+      .catch(err => {
+        console.log("❌ Validation/Create Error:", err.message);
+      });
+
+    // ===== UPDATE (with runValidators) =====
+    Movie.findOneAndUpdate(
+      { title: "Inception" },
+      { rating: 11 },  // will fail (max is 10)
+      { new: true, runValidators: true }
+    )
+      .then(doc => {
+        console.log("📝 Updated Movie:", doc);
+      })
+      .catch(err => {
+        console.log("❌ Update Validation Error:", err.message);
+      });
+  })
+  .catch(err => {
+    console.log("❌ Connection Error:", err);
+  });
