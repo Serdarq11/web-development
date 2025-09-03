@@ -1,0 +1,35 @@
+ODM (Object Data Mapper)
+An Object Data Mapper (ODM) lets developers work with document databases (like MongoDB) using objects instead of raw queries, 
+automatically mapping code objects to database documents for easier and cleaner data handling.
+
+ODM(Object Document Mapper)
+An Object Document Mapper (ODM) is a tool or library that maps application objects in your programming language to documents 
+in a document-oriented database (like MongoDB). It works like an ORM (Object-Relational Mapper) but for NoSQL databases, 
+so you can interact with the database using objects and methods instead of manual queries.
+
+👉 Example: Mongoose in Node.js is a popular ODM for MongoDB.
+
+npm init -y
+npm i mongoose
+
+We have to define a Model for every time we use Mongoose, and for every model we define a schema.
+
+**************************************************************************************************************
+when we .load index.js in bash, we get the model and reach the amadeus key value pairs by just typing amadeus
+amadeus is an instance of Movie
+and if we type ->  amadeus.save() in bash
+we can reach movies collection of it in the mongo shel as well by typing
+db.movies.find()
+**************************************************************************************************************
+
+also we can change variables of amadeus and then save, we can see the newer version in the mongo shell as well.
+
+// ===== CREATE =====
+Movie.create({ title: "Inception", rating: 8 })
+  .then(doc => console.log("Created:", doc))
+  .catch(err => console.log(err));
+
+const newMovie = new Movie({ title: "Avatar", rating: 7 });
+newMovie.save()
+  .then(doc => console.log("Saved:", doc))
+  .catch(err => console.log(err));

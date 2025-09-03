@@ -1,0 +1,23 @@
+// ===== UPDATE =====
+Movie.updateOne({ title: "Inception" }, { rating: 9 })
+  .then(res => console.log("Update one:", res))
+  .catch(err => console.log(err));
+
+Movie.updateMany({ rating: { $lt: 5 } }, { rating: 5 })
+  .then(res => console.log("Update many:", res))
+  .catch(err => console.log(err));
+
+Movie.findOneAndUpdate({ title: "Avatar" }, { rating: 8 }, { new: true })
+  .then(doc => console.log("Updated doc:", doc))
+  .catch(err => console.log(err));
+
+Movie.updateMany({title: {$in: ['Amadeus', 'Stand by Me']}}, {score: 10}).then(res => console.log(res))   // changes exact movies' scores and gices modified: 2 information
+
+Movie.findOneAndUpdate(
+  { title: "Inception" },     // filter
+  { rating: 9 },              // update
+  { new: true }               // options: return the updated document, otherwise it will return the old value 
+)
+  .then(doc => console.log("Updated:", doc))
+  .catch(err => console.log(err));
+

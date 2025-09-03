@@ -1,0 +1,14 @@
+// ===== DELETE =====
+Movie.deleteOne({ title: "Avatar" })
+  .then(res => console.log("Delete one:", res))
+  .catch(err => console.log(err));
+
+Movie.deleteMany({ rating: { $lt: 4 } })
+  .then(res => console.log("Delete many:", res))
+  .catch(err => console.log(err));
+
+Movie.findOneAndDelete({ title: "Titanic" })
+  .then(doc => console.log("Deleted doc:", doc))
+  .catch(err => console.log(err));
+
+  

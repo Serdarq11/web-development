@@ -1,0 +1,25 @@
+in bash
+type node 
+then .load index.js
+
+Movie.find({}).then(data => console.log(data))  -> finds all of the movies
+Movie.find({rating: 'PG-13'}).then(data => console.log(data))  -> one movie with the exact rating
+Movie.find({year: {$gte: 2010}}).then(data => console.log(data))  -> two films that made in 2012
+Movie.find({year: {$lt: 1999}}).then(data => console.log(data))  -> three films that made in 1986,1986,1979
+
+also we can find by id -> it is common as well
+Movie.findById('idHere').then(m => console.log(m));
+
+// ===== READ =====
+Movie.find({ rating: { $gt: 7 } })
+  .then(docs => console.log("Found many:", docs))
+  .catch(err => console.log(err));
+
+Movie.findOne({ title: "Inception" })
+  .then(doc => console.log("Found one:", doc))
+  .catch(err => console.log(err));
+
+Movie.findById("66c123abc456def789012345")
+  .then(doc => console.log("Found by ID:", doc))
+  .catch(err => console.log(err));
+
