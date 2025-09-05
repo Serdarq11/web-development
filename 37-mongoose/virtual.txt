@@ -1,0 +1,42 @@
+$ node
+Welcome to Node.js v20.13.1.
+Type ".help" for more information.
+> .load person.js
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://127.0.0.1:27017/shopApp')
+    .then(() => {
+        console.log("CONNECTION OPEN!!!")
+    })
+    .catch(err => {
+        console.log("OH NO ERROR!!!!")
+        console.log(err)
+    })
+
+const personSchema = new mongoose.Schema({
+    first: String,
+    last: String
+})
+
+personSchema.virtual('fullname').get(function() {
+    return `${this.first} ${this.last}`
+})
+
+const Person = mongoose.model('Person', personSchema);
+VirtualType {
+  path: 'fullname',
+  getters: [ [Function (anonymous)] ],
+  setters: [],
+  options: {}
+}
+> CONNECTION OPEN!!!
+> const tammy = new Person({first: 'Tammy', last: 'Chow'})
+undefined
+> tammy
+{
+  first: 'Tammy',
+  last: 'Chow',
+  _id: new ObjectId('68baace8578da20501ad1a20')
+}
+> tammy.fullname
+'Tammy Chow'
+>
